@@ -18,7 +18,7 @@ class AboutController {
     try{
 
         const data = await AboutModel.find()
-        console.log(data)
+        //console.log(data)
         res.render("admin/about/display",{a:data});
     }catch(error){
             console.log(error)
