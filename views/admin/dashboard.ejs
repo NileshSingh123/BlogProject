@@ -1,0 +1,32 @@
+<%- include('../header.ejs') %>
+<br>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-3 mt-5">
+           <ul class="list-group list">
+              <a href="/admin/dashboard"><li class="list-group-item active" aria-current="true">Dashboard</li></a>
+              <a href="/admin/blogdisplay"><li class="list-group-item list-group-item-action ">Display Blogs</li></a>
+              <a href="/admin/categoryinsert"><li class="list-group-item list-group-item-action bg-secondary">Categories</li></a>
+              <a href="/admin/contactadd"><li class="list-group-item list-group-item-action ">Contact</li></a>
+              <a href="/admin/aboutdisplay"><li class="list-group-item list-group-item-action bg-secondary">About</li></a>
+              <a href="/logout"><li class="list-group-item list-group-item-action">Logout</li></a>
+           </ul>
+       </div>
+    <div class="col-md-7">
+        <h1 class="text-center pt-4">Welcome <%= n %></h1>
+        <h3><%= e %></h3>
+        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+      <div class="col-md-1">
+      </div>
+   </div>
+</div>
+<br><br><br><br>
+
+<%- include('../footer.ejs') %>

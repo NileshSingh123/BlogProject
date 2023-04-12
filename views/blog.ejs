@@ -1,0 +1,27 @@
+<%- include('./header.ejs')  %>
+<br><br><br><br>
+<div class="container-fluid">
+  <h1 class="text-center" style="color: #386576;">BLOGS</h1>
+  
+  <div class="container">
+    <div class="row kar">
+      <% b.forEach((item)=>{ %>
+      <div class="col-md-4 blogbox text-center" >
+       
+        <img src="<%= item.image.url %>"style="height: 300px;width: 100%;">
+        <h3><%= item.title %></h3>
+        <p><%= item.description.slice(0,110) %></p>
+        <p><span><%= item.createdAt.toLocaleDateString() %></span></p>
+        <a href="/detail/<%- item.id %>" class="btn mt-5">Read more...</a>
+       </div>
+
+       <% }) %>
+      
+
+         
+     </div>
+   </div>
+ </div>
+ 
+<br><br>
+<%- include('./footer.ejs')  %>

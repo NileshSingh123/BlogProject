@@ -1,0 +1,25 @@
+<%- include('./header.ejs')   %>
+<div class="container-fluid " style="background-color:whitesmoke;">
+    <div class="container">
+      <h2 class="h-hed">About <b style="color: #fbaa1a">
+      Us</b>
+      </h2><br>
+      <div class="row">
+        <div class="col-md-8 text-center">
+          <p class="p12"style="color: #81b7b7;"><%= a.description %>
+          </p>
+          <a href="" class="btn mt-3 journey" >Read more</a>
+          
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="<%= a.image.url %>"class="w-50 shadow-lg">
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+
+
+<%- include('./footer.ejs')   %>

@@ -1,0 +1,28 @@
+<%- include('./header.ejs')   %>
+<br><br><br><br>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <h1 class=" mt-5 text-center" style="color:#386576;"><span style=" border-bottom: 2px solid #386576;">Do Contact!</span></h1>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <form action="/insertcontact" class="text-center" method="post">
+                    <input type="text" name="name" class="form-control mt-4" placeholder="Name">
+                    <input type="text" name="email" class="form-control mt-4" placeholder="Email">
+                    <input type="text" name="phone" class="form-control mt-4" placeholder="Phone">
+                    <textarea class="form-control mt-4" name="message" placeholder="Message"></textarea>
+                    <button  href="" class="btn mt-4" style="background:#fcc975; color: white; border:0; padding: 12px 26px;">Send Message</button>
+                    
+                </form><br>
+      <div class="col-md-2">
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<%- include('./footer.ejs')   %>

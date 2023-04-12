@@ -1,0 +1,33 @@
+<%- include('./header.ejs')   %>
+<div class="container-fluid login-wrap">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 mt-5">
+          <div class="login-box">
+            <h1><span style="color:orange;">ADMIN</span> LOGIN</h1> 
+              <p class="text-center text-white">GREAT TO HAVE YOU BACK</p>
+              <% if(message.length > 0 ){ %>
+                <div class="alert alert-danger"><%= message %></div>
+                <% } %>
+                <form action="/verifylogin" method="post" class="pt-4">
+                    <div class="form-group log mb-4">
+                     <input type="email" name="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group log mb-4">
+                     <input type="password" name="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group text-center">
+                    <button type="submit" class="btn btn-danger">Log In</button><br>
+                         <div class="mt-3">
+                           <span class="text-white mt-3">DON`T HAVE AN ACCOUNT?</span>
+                              <a class="reg" href="/register">&nbsp;REGISTER NOW</a>
+                         </div>
+                    </div>
+                </form>
+          </div><!-- login box end -->
+        </div><!-- col-md  end -->
+      </div><!-- row end -->
+    </div><!-- container  end -->
+   </div><!-- container fluid login wrap end -->
+
+<%- include('./footer.ejs')   %>

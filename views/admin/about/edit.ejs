@@ -1,0 +1,65 @@
+<%- include ('../../header.ejs') %>
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mt-5">
+        <ul class="list-group list">
+          <a href="/admin/dashboard"
+            ><li class="list-group-item bg-secondary" aria-current="true">
+              Dashboard
+            </li></a
+          >
+          <a href="/admin/blogdisplay"
+            ><li class="list-group-item  ">Display Blogs</li></a
+          >
+          <a href="/admin/categoryinsert"
+            ><li class="list-group-item list-group-item-action bg-secondary">Categories</li></a
+          >
+          <a href="/admin/contactadd"
+            ><li class="list-group-item list-group-item-action ">
+              Contact
+            </li></a
+          >
+          <a href="/admin/aboutdisplay"
+            ><li class="list-group-item active list-group-item-action">About</li></a
+          >
+          <a href="/logout"
+            ><li class="list-group-item list-group-item-action bg-secondary ">
+              Logout
+            </li></a
+          >
+        </ul>
+      </div>
+      <div class="col-md-7 mt-4">
+        <h1 class="pt-4 pb-3">About Update</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="">Description</label><br>
+            <textarea name="description"class="form-control" id="" cols="80" rows="10" ></textarea>
+        </div>
+            <div class="mb-3">
+              <label for="">Upload Image</label>
+              <input type="file" name="image" class="form">
+            </div>
+            <img src=""width="50px">
+            <button type="submit"class="btn btn-info">Update</button>
+            </form>
+            </div>
+ 
+    
+      </div>
+      </div>
+      </div>
+      
+      <br><br>
+
+
+
+
+
+
+
+
+
+
+<%- include ('../../footer.ejs') %>
