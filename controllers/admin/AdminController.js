@@ -53,9 +53,7 @@ class AdminController {
     }
   };
 
-
-
-       static verifylogin =async (req,res) =>{
+    static verifylogin =async (req,res) =>{
        try{
         // console.log(req.body)
         const {email , password} = req.body
