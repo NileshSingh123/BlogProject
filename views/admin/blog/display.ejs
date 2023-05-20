@@ -1,136 +1,187 @@
 <%- include('../../header.ejs') %>
-<br >
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-3 mt-5">
-      <ul class="list-group list">
-        <a href="/admin/dashboard"
-          ><li class="list-group-item bg-secondary" aria-current="true">
-            Dashboard
-          </li></a
-        >
-        <a href="/admin/blogdisplay"
-          ><li class="list-group-item active">Display Blogs</li></a
-        >
-        <a href="/admin/categoryinsert"
-          ><li class="list-group-item list-group-item-action">Categories</li></a
-        >
-        <a href="/admin/contactadd"
-          ><li class="list-group-item list-group-item-action bg-secondary">
-            Contact
-          </li></a
-        >
-        <a href="/admin/aboutdisplay"
-          ><li class="list-group-item list-group-item-action">About</li></a
-        >
-        <a href="/logout"
-          ><li class="list-group-item list-group-item-action bg-secondary">
-            Logout
-          </li></a
-        >
-      </ul>
-    </div>
-    <!-- col md 3 end-->
-    <!-- botton form   -->
-
-    <!-- table of content start -->
-    <div class="col-md-7 mt-4">
-      <h1 class="pt-4 pb-3">Blogs</h1>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Add Blog
-      </button>
-
-      <table class="table table-bordered text-center">
-        <thead class="text-white bg-success">
-          <th>ID No.</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Image</th>
-          <th>Action</th>
-        </thead>
-        <tbody>
-          <% d.forEach((item)=>{ %>
-          <tr>
-            <td><%= item._id %></td>
-            <td><%= item.title %></td>
-            <td><%= item.description %></td>
-
-            <td>
-              <img src="<%= item.image.url %> "width="50px" alt=""></td>
-              
-            <td class="opt">
-              <a href="/admin/blogview/<%= item._id %>" class="btn btn-info"
-                ><i class="fa-regular fa-eye"></i
-              ></a>
-              <a href="/admin/blogedit/<%= item._id %>" class="btn btn-info"
-                ><i class="fa-solid fa-pen-to-square"></i
-              ></a>
-              <a href="/admin/blogdelete/<%= item._id %>" class="btn btn-info"
-                ><i class="fa-solid fa-trash"></i
-              ></a>
-            </td>
-          </tr>
-
-          <% }) %>
-        </tbody>
-      </table>
-      <div class="col-md-1"></div>
-    </div>
-  </div>
-  <!-- row end-->
-</div>
-<!-- container fluid end-->
-<br><br>
-<!-- model blog create -->
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Blog</h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+  <br>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-3 mt-5">
+        <ul class="list-group list">
+          <% if(role=="admin" ){ %>
+            <a href="/admin/dashboard">
+              <li class="list-group-item bg-secondary" aria-current="true">
+                Dashboard
+              </li>
+            </a>
+            <a href="/admin/blogdisplay">
+              <li class="list-group-item active">Display Blogs</li>
+            </a>
+            <a href="/user/userdisplay">
+              <li class="list-group-item  list-group-item-action ">User </li>
+            </a>
+            <a href="/admin/categoryinsert">
+              <li class="list-group-item list-group-item-action">Categories</li>
+            </a>
+            <a href="/admin/contactadd">
+              <li class="list-group-item list-group-item-action bg-secondary">
+                Contact
+              </li>
+            </a>
+            <a href="/admin/aboutdisplay">
+              <li class="list-group-item list-group-item-action">About</li>
+            </a>
+            <a href="/logout">
+              <li class="list-group-item list-group-item-action bg-secondary">
+                Logout
+              </li>
+            </a>
+            <%}else{ %>
+              <a href="/admin/dashboard">
+                <li class="list-group-item bg-secondary" aria-current="true">
+                  Dashboard
+                </li>
+              </a>
+              <a href="/admin/blogdisplay">
+                <li class="list-group-item active">Display Blogs</li>
+              </a>
+              <a href="/admin/categoryinsert">
+                <li class="list-group-item list-group-item-action">Categories</li>
+              </a>
+              <a href="/logout">
+                <li class="list-group-item list-group-item-action bg-secondary">
+                  Logout
+                </li>
+              </a>
+              <% } %>
+        </ul>
       </div>
-      <div class="modal-body">
-        <form action="/insertblog" method="post"enctype="multipart/form-data">
-          <div class="md-3">
-            <label for="">Title</label>
-            <input type="text" name="title" class="form-control" />
-          </div>
-          <div class="md-3">
-            <label for="">Description</label>
-            <textarea type="text" name="description" class="form-control">
-            </textarea></div>
+      <!-- col md 3 end-->
+      <!-- botton form   -->
+
+      <!-- table of content start -->
+      <div class="col-md-8 ">
+        <h1 class="pt-4 pb-3">Blogs</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add Blog
+        </button>
+
+        <table class="table table-bordered text-center">
+          <thead class="text-white bg-success">
+            <th>ID No.</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Auther</th>
+            <th>Image</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <% if(role=="admin" ){ %>
+              <% r.forEach((item)=>{ %>
+                <tr>
+                  <td>
+                    <%= item._id %>
+                  </td>
+                  <td>
+                    <%= item.title %>
+                  </td>
+                  <td>
+                    <%= item.description.slice(0,60) %>
+                  </td>
+                  <td>
+                    <%= item.auther %>
+                  </td>
+
+                  <td>
+                    <img src="<%= item.image.url %> " width="50px" alt="">
+                  </td>
+
+                  <td class="opt">
+                    <a href="/admin/blogview/<%= item._id %>" class="btn btn-info"><i class="fa-regular fa-eye"></i></a>
+                    <a href="/admin/blogedit/<%= item._id %>" class="btn btn-info"><i
+                        class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/admin/blogdelete/<%= item._id %>" class="btn btn-info"><i
+                        class="fa-solid fa-trash"></i></a>
+                  </td>
+                </tr>
+
+                <% }) %>
+                  <%}else{ %>
+                    <% d.forEach((item)=>{ %>
+                      <tr>
+                        <td>
+                          <%= item._id %>
+                        </td>
+                        <td>
+                          <%= item.title %>
+                        </td>
+                        <td>
+                          <%= item.description.slice(0,60) %>
+                        </td>
+                        <td>
+                          <%= item.auther %>
+                        </td>
+
+                        <td>
+                          <img src="<%= item.image.url %> " width="50px" alt="">
+                        </td>
+
+                        <td class="opt">
+                          <a href="/admin/blogview/<%= item._id %>" class="btn btn-info"><i
+                              class="fa-regular fa-eye"></i></a>
+                          <a href="/admin/blogedit/<%= item._id %>" class="btn btn-info"><i
+                              class="fa-solid fa-pen-to-square"></i></a>
+                          <a href="/admin/blogdelete/<%= item._id %>" class="btn btn-info"><i
+                              class="fa-solid fa-trash"></i></a>
+                        </td>
+                      </tr>
+
+                      <% }) %>
+                        <% } %>
+
+          </tbody>
+        </table>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+    <!-- row end-->
+  </div>
+  <!-- container fluid end-->
+  <br><br>
+  <!-- model blog create -->
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Blog</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/insertblog" method="post" enctype="multipart/form-data">
+            <div class="md-3">
+              <label for="">Title</label>
+              <input type="text" name="title" class="form-control" />
+            </div>
+            <div class="md-3">
+              <label for="">Description</label>
+              <textarea type="text" name="description" class="form-control">
+            </textarea>
+            </div>
+            <div class="md-3">
+              <label for="">Auther</label>
+              <input type="text" name="auther" class="form-control" />
+            </div>
             <div class="md-3">
               <label for="">Upload image</label>
               <input type="file" name="image" class="form-control" />
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </form>
       </div>
     </div>
   </div>
-</div>
+  </div>
 
- 
-<%- include('../../footer.ejs') %>
+
+  <%- include('../../footer.ejs') %>

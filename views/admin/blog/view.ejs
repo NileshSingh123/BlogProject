@@ -1,43 +1,66 @@
 <%- include('../../header.ejs') %>
-<br />
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-3 mt-5">
-      <ul class="list-group list">
-        <a href="/admin/dashboard"
-          ><li class="list-group-item bg-secondary" aria-current="true">
-            Dashboard
-          </li></a
-        >
-        <a href="/admin/blogdisplay"
-          ><li class="list-group-item active">Display Blogs</li></a
-        >
-        <a href="/admin/categoryinsert"
-          ><li class="list-group-item list-group-item-action">Categories</li></a
-        >
-        <a href="/admin/contactadd"
-          ><li class="list-group-item list-group-item-action bg-secondary">
-            Contact
-          </li></a
-        >
-        <a href="/admin/aboutdisplay"
-          ><li class="list-group-item list-group-item-action">About</li></a
-        >
-        <a href="/logout"
-          ><li class="list-group-item list-group-item-action bg-secondary">
-            Logout
-          </li></a
-        >
-      </ul>
-    </div>
-    <!-- col md 3 end-->
-    <!-- botton form   -->
+  <br />
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mt-5">
+        <ul class="list-group list">
+          <% if(role=="admin" ){ %>
+            <a href="/admin/dashboard">
+              <li class="list-group-item bg-secondary" aria-current="true">
+                Dashboard
+              </li>
+            </a>
+            <a href="/admin/blogdisplay">
+              <li class="list-group-item active">Display Blogs</li>
+            </a>
+            <a href="/user/userdisplay">
+              <li class="list-group-item  list-group-item-action ">User </li>
+            </a>
+            <a href="/admin/categoryinsert">
+              <li class="list-group-item list-group-item-action">Categories</li>
+            </a>
+            <a href="/admin/contactadd">
+              <li class="list-group-item list-group-item-action bg-secondary">
+                Contact
+              </li>
+            </a>
+            <a href="/admin/aboutdisplay">
+              <li class="list-group-item list-group-item-action">About</li>
+            </a>
+            <a href="/logout">
+              <li class="list-group-item list-group-item-action bg-secondary">
+                Logout
+              </li>
+            </a>
+            <%}else{ %>
+              <a href="/admin/dashboard">
+                <li class="list-group-item bg-secondary" aria-current="true">
+                  Dashboard
+                </li>
+              </a>
+              <a href="/admin/blogdisplay">
+                <li class="list-group-item active">Display Blogs</li>
+              </a>
+              <a href="/admin/categoryinsert">
+                <li class="list-group-item list-group-item-action">Categories</li>
+              </a>
+              <a href="/logout">
+                <li class="list-group-item list-group-item-action bg-secondary">
+                  Logout
+                </li>
+              </a>
+              <% } %>
 
-    <!-- table of content start -->
-    <div class="col-md-7 mt-4">
-      <h1 class="pt-4 pb-3">View</h1>
-      <!-- <button
+        </ul>
+      </div>
+      <!-- col md 3 end-->
+      <!-- botton form   -->
+
+      <!-- table of content start -->
+      <div class="col-md-7 mt-4">
+        <h1 class="pt-4 pb-3">View</h1>
+        <!-- <button
         type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
@@ -46,34 +69,40 @@
         Add Blog
       </button> -->
 
-      <table class="table table-bordered text-center">
-        <thead class="text-white bg-success">
-          <th>ID No.</th>
-          <th>Title</th>
-          <th>Description</th>
-         
-          
-        </thead>
-        <tbody>
-          
-          <tr>
-            <td><%= view._id %></td>
-            <td><%= view.title %></td>
-            <td><%= view.description %></td>
-            <td><img src="<%= view.image.url %>"style="width: 100%;height: 250px;" alt=""></td>
+        <table class="table table-bordered text-center">
+          <thead class="text-white bg-success">
+            <th>ID No.</th>
+            <th>Title</th>
+            <th>Description</th>
 
-          </tr>
 
-          
-        </tbody>
-      </table>
-      <div class="col-md-1"></div>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>
+                <%= view._id %>
+              </td>
+              <td>
+                <%= view.title %>
+              </td>
+              <td>
+                <%= view.description %>
+              </td>
+              <td><img src="<%= view.image.url %>" style="width: 100%;height: 250px;" alt=""></td>
+
+            </tr>
+
+
+          </tbody>
+        </table>
+        <div class="col-md-1"></div>
+      </div>
     </div>
+    <!-- row end-->
   </div>
-  <!-- row end-->
-</div>
-<!-- container fluid end-->
-<br /><br />
+  <!-- container fluid end-->
+  <br /><br />
 
 
-<%- include('../../footer.ejs') %>
+  <%- include('../../footer.ejs') %>

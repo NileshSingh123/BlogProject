@@ -10,6 +10,17 @@ const AdminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      default: "user",
+    },
+    status: {
+      type: String,
+      default: "pending",
+    },
+    comment: {
+      type: String,
+    },
     password: {
       type: String,
       required: true,

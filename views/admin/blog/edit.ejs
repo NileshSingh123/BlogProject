@@ -1,62 +1,85 @@
 <%- include('../../header.ejs') %>
 
-<div class="container mt-5">
+  <div class="container mt-5">
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-3 mt-5">
         <ul class="list-group list">
-          <a href="/admin/dashboard"
-            ><li class="list-group-item bg-secondary" aria-current="true">
-              Dashboard
-            </li></a
-          >
-          <a href="/admin/blogdisplay"
-            ><li class="list-group-item active">Display Blogs</li></a
-          >
-          <a href="/admin/categoryinsert"
-            ><li class="list-group-item list-group-item-action">Categories</li></a
-          >
-          <a href="/admin/contactadd"
-            ><li class="list-group-item list-group-item-action bg-secondary">
-              Contact
-            </li></a
-          >
-          <a href="/admin/aboutdisplay"
-            ><li class="list-group-item list-group-item-action">About</li></a
-          >
-          <a href="/logout"
-            ><li class="list-group-item list-group-item-action bg-secondary">
-              Logout
-            </li></a
-          >
+          <% if(role=="admin" ){ %>
+            <a href="/admin/dashboard">
+              <li class="list-group-item bg-secondary" aria-current="true">
+                Dashboard
+              </li>
+            </a>
+            <a href="/admin/blogdisplay">
+              <li class="list-group-item active">Display Blogs</li>
+            </a>
+            <a href="/user/userdisplay">
+              <li class="list-group-item  list-group-item-action ">User </li>
+            </a>
+            <a href="/admin/categoryinsert">
+              <li class="list-group-item list-group-item-action">Categories</li>
+            </a>
+            <a href="/admin/contactadd">
+              <li class="list-group-item list-group-item-action bg-secondary">
+                Contact
+              </li>
+            </a>
+            <a href="/admin/aboutdisplay">
+              <li class="list-group-item list-group-item-action">About</li>
+            </a>
+            <a href="/logout">
+              <li class="list-group-item list-group-item-action bg-secondary">
+                Logout
+              </li>
+            </a>
+            <%}else{ %>
+              <a href="/admin/dashboard">
+                <li class="list-group-item bg-secondary" aria-current="true">
+                  Dashboard
+                </li>
+              </a>
+              <a href="/admin/blogdisplay">
+                <li class="list-group-item active">Display Blogs</li>
+              </a>
+              <a href="/admin/categoryinsert">
+                <li class="list-group-item list-group-item-action">Categories</li>
+              </a>
+              <a href="/logout">
+                <li class="list-group-item list-group-item-action bg-secondary">
+                  Logout
+                </li>
+              </a>
+              <% } %>
         </ul>
       </div>
       <div class="col-md-7 mt-4">
         <h1 class="pt-4 pb-3">Blog Update</h1>
         <form action="/blogupdate/<%= edit._id %>" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="">title</label>
-                <input type="text" class="form-control" name="title" value="<%= edit.title %>"> 
-            </div>
-            <div class="mb-3">
-                <label for="">Description</label><br>
-                <textarea name="description"class="form-control" id="" cols="80" rows="10" ><%= edit.description %></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="">Upload Image</label>
-              <input type="file" name="image" class="form">
-            </div>
-            <img src="<%= edit.image.url %>"width="50px">
-            <button type="submit"class="btn btn-info">Update</button>
-            </form>
-            </div>
-
-    
+          <div class="mb-3">
+            <label for="">title</label>
+            <input type="text" class="form-control" name="title" value="<%= edit.title %>">
+          </div>
+          <div class="mb-3">
+            <label for="">Description</label><br>
+            <textarea name="description" class="form-control" id="" cols="80"
+              rows="10"><%= edit.description %></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">Upload Image</label>
+            <input type="file" name="image" class="form">
+          </div>
+          <img src="<%= edit.image.url %>" width="50px">
+          <button type="submit" class="btn btn-info">Update</button>
+        </form>
       </div>
-      </div>
-      </div>
-      
-      <br><br>
 
 
-      <%- include('../../footer.ejs') %>
+    </div>
+  </div>
+  </div>
+
+  <br><br>
+
+
+  <%- include('../../footer.ejs') %>

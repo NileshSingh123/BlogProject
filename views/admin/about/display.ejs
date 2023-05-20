@@ -1,84 +1,85 @@
 <%- include('../../header.ejs') %>
-<br />
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-3 mt-5">
-      <ul class="list-group list">
-        <a href="/admin/dashboard"
-          ><li class="list-group-item list-group-item-action bg-secondary " aria-current="true">
-            Dashboard
-          </li></a
-        >
-        <a href="/admin/blogdisplay"
-          ><li class="list-group-item list-group-item-action">
-            Display Blogs
-          </li></a
-        >
-        <a href="/admin/categoryinsert"
-          ><li class="list-group-item list-group-item-action bg-secondary">
-            Categories
-          </li></a
-        >
-        <a href="/admin/contactadd"
-          ><li class="list-group-item list-group-item-action">Contact</li></a
-        >
-        <a href="/admin/aboutdisplay"
-          ><li class="list-group-item active list-group-item-action ">
-            About
-          </li></a
-        >
-        <a href="/logout"
-          ><li class="list-group-item list-group-item-action bg-secondary">Logout</li></a
-        >
-      </ul>
-    </div>
-    <div class="col-md-7 mt-4">
-      <h1 class="pt-4 pb-3">About</h1>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Add About
-      </button>
-      <table class="table table-bordered text-center">
-        <thead class="text-white bg-success">
-          <th>Id</th>
-          <th>About</th>
-          <th>Image</th>
-          <th>Action</th>
-        </thead>
-        <tbody>
-          <% a.forEach((item)=>{  %>
-          <tr>
-           <td><%= item. _id %></td>
-            <td><%= item.description %></td>
-            <td>
-              <img src="<%= item.image.url %>" alt="" width="100px"></td>
-                
-              <td class="opt">
-                <a href="/admin/aboutedit/<%= item._id %>" class="btn btn-info"
-                  ><i class="fa-solid fa-pen-to-square"></i
-                ></a>
-                <a href="/admin/aboutdelete/<%= item._id %>" class="btn btn-info"
-                  ><i class="fa-solid fa-trash"></i
-                ></a>
-              </td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
+  <br />
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mt-5">
+        <ul class="list-group list">
+          <a href="/admin/dashboard">
+            <li class="list-group-item list-group-item-action bg-secondary " aria-current="true">
+              Dashboard
+            </li>
+          </a>
+          <a href="/admin/blogdisplay">
+            <li class="list-group-item list-group-item-action">
+              Display Blogs
+            </li>
+          </a>
+          <a href="/user/userdisplay">
+            <li class="list-group-item  list-group-item-action ">User </li>
+          </a>
+          <a href="/admin/categoryinsert">
+            <li class="list-group-item list-group-item-action bg-secondary">
+              Categories
+            </li>
+          </a>
+          <a href="/admin/contactadd">
+            <li class="list-group-item list-group-item-action">Contact</li>
+          </a>
+          <a href="/admin/aboutdisplay">
+            <li class="list-group-item active list-group-item-action ">
+              About
+            </li>
+          </a>
+          <a href="/logout">
+            <li class="list-group-item list-group-item-action bg-secondary">Logout</li>
+          </a>
+        </ul>
+      </div>
+      <div class="col-md-7 mt-4">
+        <h1 class="pt-4 pb-3">About</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Add About
+        </button>
+        <table class="table table-bordered text-center">
+          <thead class="text-white bg-success">
+            <th>Id</th>
+            <th>About</th>
+            <th>Image</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <% a.forEach((item)=>{ %>
+              <tr>
+                <td>
+                  <%= item. _id %>
+                </td>
+                <td>
+                  <%= item.description %>
+                </td>
+                <td>
+                  <img src="<%= item.image.url %>" alt="" width="100px">
+                </td>
+
+                <td class="opt">
+                  <a href="/admin/aboutedit/<%= item._id %>" class="btn btn-info"><i
+                      class="fa-solid fa-pen-to-square"></i></a>
+                  <a href="/admin/aboutdelete/<%= item._id %>" class="btn btn-info"><i
+                      class="fa-solid fa-trash"></i></a>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-<br />
+  <br />
 
-<!-- model blog create -->
-<!-- Button trigger modal -->
+  <!-- model blog create -->
+  <!-- Button trigger modal -->
 
-  
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -88,20 +89,21 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="/insertabout" method="post"enctype="multipart/form-data">
-                <div class="md-3">
-                  <label for="">Description</label>
-                  <textarea type="text" name="description" class="form-control">
-                  </textarea></div>
-                  <div class="md-3">
-                    <label for="">Add Image</label>
-                    <input type="file" name="image" class="form-control" />
-                  </div>
-                
-                <button type="submit" class="btn btn-primary mt-3">Submit</button>    
+          <form action="/insertabout" method="post" enctype="multipart/form-data">
+            <div class="md-3">
+              <label for="">Description</label>
+              <textarea type="text" name="description" class="form-control">
+                  </textarea>
+            </div>
+            <div class="md-3">
+              <label for="">Add Image</label>
+              <input type="file" name="image" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
         </div>
       </div>
     </div>
   </div>
 
-<%- include ('../../footer.ejs') %>
+  <%- include ('../../footer.ejs') %>

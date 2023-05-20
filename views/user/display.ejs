@@ -1,0 +1,93 @@
+<%- include('../header.ejs') %>
+
+    <br>
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-md-3 mt-5">
+                <ul class="list-group list">
+                    <a href="/admin/dashboard">
+                        <li class="list-group-item bg-secondary" aria-current="true">
+                            Dashboard
+                        </li>
+                    </a>
+                    <a href="/admin/blogdisplay">
+                        <li class="list-group-item ">Display Blogs</li>
+                    </a>
+                    <a href="/user/userdisplay">
+                        <li class="list-group-item active list-group-item-action ">User </li>
+                    </a>
+                    <a href="/admin/categoryinsert">
+                        <li class="list-group-item list-group-item-action">Categories</li>
+                    </a>
+                    <a href="/admin/contactadd">
+                        <li class="list-group-item list-group-item-action bg-secondary">
+                            Contact
+                        </li>
+                    </a>
+                    <a href="/admin/aboutdisplay">
+                        <li class="list-group-item list-group-item-action">About</li>
+                    </a>
+                    <a href="/logout">
+                        <li class="list-group-item list-group-item-action bg-secondary">
+                            Logout
+                        </li>
+                    </a>
+                </ul>
+            </div>
+
+            <div class="col-md-8 mt-4">
+                <h1>User Display</h1>
+                <table class="table table-bordered text-center">
+                    <thead class="text-white bg-success">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+
+                        <th>status</th>
+                        <th>Comment</th>
+                        <th>varified</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <% i=1 %>
+                            <% c.forEach((item)=>{ %>
+                                <tr>
+                                    <td>
+                                        <%= i++ %>
+                                    </td>
+                                    <td>
+                                        <%= item.name %>
+                                    </td>
+                                    <td>
+                                        <%= item.email %>
+                                    </td>
+
+                                    <td>
+                                        <%= item.status %>
+                                    </td>
+                                    <td>
+                                        <form action="/updateverified/<%=item._id %>" method="post">
+                                            <textarea name="comment"><%= item.comment %></textarea>
+                                    </td>
+                                    <td>
+                                        <button type="submit" name="status" value="Approved"
+                                            class="btn btn-info">Approved</button>
+                                        <button type="submit" name="status" value="Rejected"
+                                            class="btn btn-danger">Rejected</button>
+                                    </td>
+                                    </form>
+                                    <td class="d-flex">
+                                        <button type="submit" name="view" class="btn btn-info"><i
+                                                class="fa-regular fa-eye"></i></button>
+
+                                        <button type="submit" name="delete" class="btn btn-danger "><i
+                                                class="fa-solid fa-trash"></i></button>
+                                        <button type="submit" name="edit" class="btn btn-info"><i
+                                                class="fa-solid fa-pen-to-square"></i></button>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                    </tbody>
+                </table>
+            </div>

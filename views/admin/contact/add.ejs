@@ -1,40 +1,43 @@
 <%- include('../../header.ejs') %>
 
-<br />
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-3 mt-5">
-      <ul class="list-group list">
-        <a href="/admin/dashboard"
-          ><li class="list-group-item bg-secondary" aria-current="true">
-            Dashboard
-          </li></a
-        >
-        <a href="/admin/blogdisplay"
-          ><li class="list-group-item">Display Blogs</li></a
-        >
-        <a href="/admin/categoryinsert"
-          ><li class="list-group-item list-group-item-action bg-secondary">Categories</li></a
-        >
-        <a href="/admin/contactadd"
-          ><li class="list-group-item active list-group-item-action ">
-            Contact
-          </li></a
-        >
-        <a href="/admin/aboutdisplay"
-          ><li class="list-group-item  list-group-item-action">About</li></a
-        >
-        <a href="/logout"
-          ><li class="list-group-item list-group-item-action bg-secondary">
-            Logout
-          </li></a
-        >
-      </ul>
-    </div>
-    <div class="col-md-7 mt-4">
+  <br />
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mt-5">
+        <ul class="list-group list">
+          <a href="/admin/dashboard">
+            <li class="list-group-item bg-secondary" aria-current="true">
+              Dashboard
+            </li>
+          </a>
+          <a href="/admin/blogdisplay">
+            <li class="list-group-item">Display Blogs</li>
+          </a>
+          <a href="/user/userdisplay">
+            <li class="list-group-item  list-group-item-action ">User </li>
+          </a>
+          <a href="/admin/categoryinsert">
+            <li class="list-group-item list-group-item-action bg-secondary">Categories</li>
+          </a>
+          <a href="/admin/contactadd">
+            <li class="list-group-item active list-group-item-action ">
+              Contact
+            </li>
+          </a>
+          <a href="/admin/aboutdisplay">
+            <li class="list-group-item  list-group-item-action">About</li>
+          </a>
+          <a href="/logout">
+            <li class="list-group-item list-group-item-action bg-secondary">
+              Logout
+            </li>
+          </a>
+        </ul>
+      </div>
+      <div class="col-md-7 mt-4">
         <h1 class="pt-4 pb-3">Contact</h1>
-       
+
         <table class="table table-bordered text-center">
           <thead class="text-white bg-success">
             <th>Id</th>
@@ -44,28 +47,38 @@
             <th>Message</th>
           </thead>
           <tbody>
-           <% c.forEach((item)=>{ %>
+            <% c.forEach((item)=>{ %>
 
-          
-            <tr>
-             <td><%= item._id %></td>
-              <td><%= item.name %></td>
-              <td><%= item.email %></td>
-              <td><%= item.phone %></td>
-              <td><%= item.message %></td>
-                  
-                
-            </tr>
-            <% }) %>
+
+              <tr>
+                <td>
+                  <%= item._id %>
+                </td>
+                <td>
+                  <%= item.name %>
+                </td>
+                <td>
+                  <%= item.email %>
+                </td>
+                <td>
+                  <%= item.phone %>
+                </td>
+                <td>
+                  <%= item.message %>
+                </td>
+
+
+              </tr>
+              <% }) %>
           </tbody>
         </table>
       </div>
     </div>
   </div>
   <br />
-    <!-- col md 3 end-->
-    <!-- botton form   -->
-    <!-- col md 3 end-->
-    <!-- botton form   -->
-  
-<%- include('../../footer.ejs') %>
+  <!-- col md 3 end-->
+  <!-- botton form   -->
+  <!-- col md 3 end-->
+  <!-- botton form   -->
+
+  <%- include('../../footer.ejs') %>
