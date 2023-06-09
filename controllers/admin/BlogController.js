@@ -1,13 +1,13 @@
 const BlogModel = require("../../modals/Blog");
 const AdminModal = require("../../modals/Admin");
-const CommentModal = require("../../modals/Comment");
+const { ObjectId } = require("mongodb");
 var cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
-  cloud_name: "ddz1pswrm",
-  api_key: "288465368246899",
-  api_secret: "Zq5bXS-SVjDGmijXiRY4ohoXZ_c",
-  // secure: true
+  cloud_name: "dbrnbg1n1",
+  api_key: "954334871439665",
+  api_secret: "vuJky_zyIzrY9kY94cuL7nrR8x4",
+  //secure: true,
 });
 
 class BlogController {
@@ -136,18 +136,30 @@ class BlogController {
     }
   };
 
-  //comment
-  static comment = async (req, res) => {
+  // addcomment
+  static addcomment = async (req, res) => {
     try {
-      //console.log(req.body.comment);
-      //console.log(req.params.id);
+      var post_id = req.body.post_id;
+      var username = req.body.username;
+      var comment = req.body.comment;
+      var email = req.body.email;
 
-      const comments = new CommentModal({
-        comment: req.body.comment,
-      });
-      await comments.save();
-      console.log(comments);
-      // res.redirect("/detail/:id");
+      var comment_id = new ObjectId();
+      await BlogModel.findByIdAndUpdate(
+        { _id: post_id },
+        {
+          $push: {
+            comment: {
+              d_id: comment_id,
+              username: username,
+              comment: comment,
+              email: email,
+            },
+          },
+        }
+      );
+
+      res.status(200).send({ success: true, msg: "Comment added!" });
     } catch (error) {
       console.log(error);
     }

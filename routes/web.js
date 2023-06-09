@@ -9,7 +9,6 @@ const ContactController = require("../controllers/admin/ContactController");
 const auth = require("../middleware/auth");
 
 //comment
-router.post("/blogs/:id/comments", BlogController.comment);
 
 // front controoler route path
 router.get("/", FrontController.home);
@@ -35,6 +34,7 @@ router.get("/admin/blogview/:id", auth, BlogController.blogview);
 router.get("/admin/blogedit/:id", auth, BlogController.blogedit);
 router.post("/blogupdate/:id", auth, BlogController.blogupdate);
 router.get("/admin/blogdelete/:id", auth, BlogController.blogDelete);
+router.post("/add-comment", BlogController.addcomment);
 
 //category controller
 router.get("/admin/categoryinsert", auth, CategoryController.categorydisplay);

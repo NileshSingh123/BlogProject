@@ -3,10 +3,10 @@ const CategoryModel = require("../../modals/Category");
 var cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
-  cloud_name: "ddz1pswrm",
-  api_key: "288465368246899",
-  api_secret: "Zq5bXS-SVjDGmijXiRY4ohoXZ_c",
-  // secure: true
+  cloud_name: "dbrnbg1n1",
+  api_key: "954334871439665",
+  api_secret: "vuJky_zyIzrY9kY94cuL7nrR8x4",
+  //secure: true,
 });
 
 class AboutController {

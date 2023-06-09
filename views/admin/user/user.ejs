@@ -1,0 +1,113 @@
+<%- include('../../header.ejs') %>
+    <br>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3 mt-5">
+                <ul class="list-group list">
+                    <% if(role=="admin" ){ %>
+                        <a href="/admin/dashboard">
+                            <li class="list-group-item active" aria-current="true">Dashboard</li>
+                        </a>
+                        <a href="/admin/blogdisplay">
+                            <li class="list-group-item list-group-item-action ">Display Blogs</li>
+                        </a>
+                        <a href="/admin/user">
+                            <li class="list-group-item list-group-item-action ">User</li>
+                        </a>
+                        <a href="/admin/categoryinsert">
+                            <li class="list-group-item list-group-item-action bg-secondary">Categories</li>
+                        </a>
+                        <a href="/admin/contactadd">
+                            <li class="list-group-item list-group-item-action ">Contact</li>
+                        </a>
+                        <a href="/admin/aboutdisplay">
+                            <li class="list-group-item list-group-item-action bg-secondary">About</li>
+                        </a>
+                        <a href="/logout">
+                            <li class="list-group-item list-group-item-action">Logout</li>
+                        </a>
+                        <%}else{ %>
+                            <a href="/admin/dashboard">
+                                <li class="list-group-item active" aria-current="true">Dashboard</li>
+                            </a>
+                            <a href="/admin/blogdisplay">
+                                <li class="list-group-item list-group-item-action ">Display Blogs</li>
+                            </a>
+                            <a href="/admin/categoryinsert">
+                                <li class="list-group-item list-group-item-action bg-secondary">Categories</li>
+                            </a>
+                            <a href="/logout">
+                                <li class="list-group-item list-group-item-action">Logout</li>
+                            </a>
+                            <% } %>
+                </ul>
+            </div>
+            <div class="col-md-7 mt-4">
+                <h1 class="pt-4 pb-3">Contact</h1>
+
+                <table class="table table-bordered text-center">
+                    <thead class="bg-success">
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>email</th>
+
+                            <th>Status</th>
+                            <th>Comment</th>
+                            <th></th>
+                            <th>action</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <% i=1 %>
+                            <% d.forEach((item)=>{ %>
+                                <tr>
+                                    <td>
+                                        <%= i++ %>
+                                    </td>
+                                    <td>
+                                        <%= item.name %>
+                                    </td>
+                                    <td>
+                                        <%= item.email %>
+                                    </td>
+
+                                    <td>
+                                        <%= item.status %>
+                                    </td>
+                                    <td>
+                                        <form action="/update_approve/<%= item._id %>" method="post">
+                                            <textarea name="comment"></textarea>
+                                            <input type="hidden" name="email" value="<%= item.email %>">
+                                            <input type="hidden" name="course" value="<%= item.course %>">
+                                            <input type="hidden" name="name" value="<%= item.name %>">
+                                    </td>
+                                    <td>
+                                        <button type="submit" name="status" value="Approved"
+                                            class="btn btn-info">Approved</button>
+                                        <button type="submit" name="status" value="Rejected"
+                                            class="btn btn-danger">Rejected</button>
+                                        </form>
+
+                                    </td>
+                                    <td>
+                                        <a href="/course_view/<%= item._id %>" class="btn btn-info">View</a>
+                                        <a href="/course_delete/<%= item._id %>" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+    <!-- col md 3 end-->
+    <!-- botton form   -->
+    <!-- col md 3 end-->
+    <!-- botton form   -->
+
+
+    <%- include('../../footer.ejs') %>
